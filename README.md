@@ -1,45 +1,100 @@
-![Open Graph, Homepage (2) (1)](https://github.com/basehub-ai/marketing-website-template/assets/40034115/e8566293-9c58-4467-a4c7-7a700eea10c8)
+# Marketing Website (BaseHub Template)
 
-[BaseHub Templates](https://basehub.com/templates) are production-ready website templates, powered by BaseHub.
+A fully-featured, production-ready **marketing website** for startups and SaaS products, built on the [BaseHub](https://basehub.com) CMS. It ships with a homepage, blog, changelog, documentation-style dynamic pages, text search, newsletter forms, dark/light mode, analytics, and SEO best practices — with all content editable visually from BaseHub.
 
-# Marketing Website Template
+> Based on the official BaseHub marketing-website template.
 
-[![Use template](https://basehub.com/template-button.svg)](https://basehub.com/basehub/marketing-website)
+## What it does
 
-Fully featured marketing website.
+- **Landing page** — hero, logos, features, testimonials, pricing, FAQ sections, all CMS-driven
+- **Blog** — list + detail pages with RSS feed (`/blog/rss.xml`)
+- **Changelog** — release-notes listing with RSS feed (`/changelog/rss.xml`)
+- **Dynamic pages** — catch-all `[[...slug]]` routes render any CMS page type
+- **Text search** — full-text search powered by BaseHub
+- **Newsletter & contact forms** — server-action-backed forms
+- **Dark/light mode** toggle, analytics integrations, social links
+- SEO-ready: Open Graph/Twitter metadata, sitemap-friendly structure
 
-- 🔸 Perfect for startups and indie hackers looking to showcase their SaaS
-- 🔸 Fully editable from BaseHub
-- 🔸 Comes with Search, Dark/Light Mode, Analytics, and more
-- 🔸 Requires just a BaseHub account and a deployment platform—no other service
+## Features
 
-## Stack
+- All copy, images, and page structure editable in the BaseHub dashboard — no redeploys for content changes
+- Draft mode support (preview unpublished CMS content)
+- Responsive, mobile-first design
+- Modular `_sections` components (each homepage section is a self-contained component)
+- shadcn/ui-based design system with Tailwind CSS
 
-- Next.js
-- BaseHub
-- Tailwind CSS
+## Tech stack
 
-## One Click Deployment
+- **Next.js** 15 (App Router, SSR/ISR)
+- **React** 19
+- **TypeScript**
+- **BaseHub CMS** (`basehub` SDK + `basehub.config.ts` schema)
+- **Tailwind CSS** + **shadcn/ui** (Radix UI primitives)
+- **lucide-react** icons
+- **Vercel Analytics** integration points
 
-[![Deploy with Vercel](https://vercel.com/button)]([](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbasehub-ai%2Fmarketing-website-template&integration-ids=oac_xwgyJe0UwFLtsKIvIScYh0rY&env=&demo-url=https%3A%2F%2Fnextjs-marketing-website.basehub.com%2F&demo-description=Introducing%20the%20%E2%80%9CCMS%20Marketing%20Website%20Template%E2%80%9D%20by%20BaseHub%E2%80%94a%20sleek%2C%20modern%2C%20and%20fully%20responsive%20solution%20for%20your%20marketing%20needs.%20This%20template%20is%20designed%20to%20empower%20businesses%20with%20an%20intuitive%2C%20easy-to-navigate%20interface%20that%20seamlessly%20integrates%20with%20any%20CMS%20platform.%0A%0AKey%20Features%3A%0A%0A%09%E2%80%A2%09Responsive%20Design%3A%20Ensures%20optimal%20viewing%20experience%20across%20all%20devices%2C%20from%20desktops%20to%20smartphones.%0A%09%E2%80%A2%09Customizable%20Layouts%3A%20Offers%20flexible%20and%20dynamic%20layout%20options%20to%20suit%20various%20content%20needs%20and%20styles.%0A%09%E2%80%A2%09SEO%20Friendly%3A%20Built%20with%20SEO%20best%20practices%20in%20mind%20to%20improve%20your%20search%20engine%20rankings%20and%20drive%20organic%20traffic.%0A%09%E2%80%A2%09Blog%20and%20Changelog%3A%20Blog%20and%20changelog%20integrated%20to%20have%20a%20nice%20experience.%0A%09%E2%80%A2%09Integrated%20Analytics%3A%20Easy%20integration%20with%20popular%20analytics%20tools%20to%20track%20and%20analyze%20website%20performance.%0A%09%E2%80%A2%09Social%20Media%20Integration%3A%20Connect%20and%20engage%20with%20your%20audience%20through%20seamless%20social%20media%20integration.%0A%09%E2%80%A2%09Text%20based%20Search%3A%20Out%20of%20the%20box%20integrated%20search%20with%20BaseHub%0A%0AWhether%20you%20are%20launching%20a%20new%20product%2C%20promoting%20a%20service%2C%20or%20building%20brand%20awareness%2C%20the%20%E2%80%9CCMS%20Marketing%20Website%20Template%22%20will%20fits%20perfectly.&demo-image=https%3A%2F%2Fbasehub.earth%2Ffa068a12%2FuK8Uaibmc32TOGypkLvBu%2Freadme-(2).png&external-id=mly6i259eym3jkyvq6txyciu%3AViwfZNGQgCUccNVudPIns))
+## Quick start
 
-_You can deploy this anywhere. Vercel works nicely and with one click._
+Prerequisites: Node.js 18+ and npm; a free [BaseHub](https://basehub.com) account.
 
-## Local Development
+```bash
+npm install
+```
 
-**Install dependencies**
-\`\`\`bash
-pnpm i
-\`\`\`
+Create `.env.local` and add your BaseHub token:
 
-**Add your BASEHUB_TOKEN to `.env.local`**
-\`\`\`txt
+```txt
 # .env.local
+BASEHUB_TOKEN=<your-basehub-token>
+```
 
-BASEHUB_TOKEN="<get-it-from-your-basehub-repo>"
-\`\`\`
+Start the dev server:
 
-**Start the dev server**
-\`\`\`bash
-pnpm dev
-\`\`\`
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+### Production build
+
+```bash
+npm run build
+npm run start
+```
+
+## Project structure
+
+```
+├── app/
+│   ├── [[...slug]]/       # CMS-driven dynamic pages
+│   ├── blog/              # Blog list, [slug] detail, rss.xml route
+│   ├── changelog/         # Changelog list, [slug] detail, rss.xml route
+│   ├── _sections/         # Homepage building blocks (hero, pricing, FAQ, forms, ...)
+│   └── layout.tsx         # Root layout, metadata, BaseHub draft-mode toolbar
+├── basehub.config.ts      # BaseHub schema (pages, blog, changelog collections)
+├── components/            # Shared + shadcn/ui components
+├── context/               # React context providers
+├── hooks/                 # React hooks
+├── lib/                   # Utilities
+└── public/                # Static assets
+```
+
+## Environment variables
+
+| Variable        | Required | Description                                   |
+|-----------------|----------|-----------------------------------------------|
+| `BASEHUB_TOKEN` | Yes      | BaseHub API token (create one in your BaseHub project dashboard). Keeps the site connected to its CMS content. |
+
+The token is used server-side only; never expose it in client code.
+
+## Deployment notes
+
+- This is a **dynamic SSR app** — it needs a Node.js host (Vercel, Netlify, or a VPS), not a static host.
+- It requires the `BASEHUB_TOKEN` secret at build/run time (the CMS is fetched at build time for static pages and at request time for drafts).
+- Static export (`output: 'export'`) is **not supported** for this template: it relies on server actions (forms/newsletter), draft mode/cookies, and dynamic search.
+- Recommended: one-click deploy to Vercel with the BaseHub integration, or any platform that supports Next.js SSR.
+
+---
+
+Built by Girish Lade — https://ladestack.in
